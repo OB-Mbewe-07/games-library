@@ -21,6 +21,7 @@ export class AvailableGamesComponent implements OnInit , OnDestroy{
             this.gamesDataClass.getDeals().subscribe({
                 next: (data) => {
                     this.gamesData = data; 
+                    console.log('data: ',data);
                     this.cdr.detectChanges()
                 },
                 error: (err) =>{

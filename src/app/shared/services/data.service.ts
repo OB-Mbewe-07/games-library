@@ -1,15 +1,20 @@
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, OnInit } from "@angular/core";
 import { GameDealsData } from "../models/data.model";
+import { Observable, shareReplay } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-export class DataFetchService {
+export class DataFetchService{
     private http = inject(HttpClient);
-    private apiUrl = 'https://www.cheapshark.com/api/1.0/deals'
+    private apiUrl = 'https://www.cheapshark.com/api/1.0/deals';
+
+    private deals$ = this.http.get<GameDealsData[]>(this.apiUrl).pipe(
+        shareReplay(1) 
+    );
 
     getDeals() {
-        return this.http.get<GameDealsData[]>(`${this.apiUrl}`);
+        return this.deals$;
     }
 }
