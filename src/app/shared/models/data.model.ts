@@ -1,10 +1,21 @@
-export interface GameDealsData{
-    gameID: number;
-    salePrice: number;
-    normalPrice:  number;
-    title: string;
-    dealRating: number;
-    thump: string; //img
+export interface GameDealsData {
+    dealID: string;
+    dealRating: string;
+    gameID: string;
+    internalName: string;
+    isOnSale: string;
+    lastChange: number;
+    metacriticLink: string;
+    metacriticScore: string;
+    normalPrice: string;
     releaseDate: number;
-    storeID: number
+    salePrice: string;
+    savings: string;
+    steamAppID: string;
+    steamRatingCount: string;
+    steamRatingPercent: string;
+    steamRatingText: string;
+    storeID: string;
+    thumb: string;
+    title: string;
 }

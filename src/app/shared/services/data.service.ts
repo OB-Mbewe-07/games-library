@@ -10,6 +10,6 @@ export class DataFetchService {
     private apiUrl = 'https://www.cheapshark.com/api/1.0/deals'
 
     getDeals() {
-        return this.http.get<GameDealsData>(`${this.apiUrl}`);
+        return this.http.get<GameDealsData[]>(`${this.apiUrl}`);
     }
 }
