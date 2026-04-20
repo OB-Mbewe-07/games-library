@@ -12,7 +12,7 @@ export const GameStore = signalStore(
     withComputed((store) => ({
         gamesCount: computed(() => store.games().length)
     })),
-    
+
     withMethods((store) => ({
         addGame(newGame: GameDealsData) {
             patchState(store, { 

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, OnInit } from "@angular/core";
 import { GameDealsData } from "../models/data.model";
-import { Observable, shareReplay } from "rxjs";
+import { shareReplay } from "rxjs";
 
 @Injectable({
     providedIn: 'root'

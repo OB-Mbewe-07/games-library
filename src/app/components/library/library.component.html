@@ -1,0 +1,54 @@
+@if (store.games().length !== 0) {
+  <div class="p-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+      @for (game of store.games(); track game.dealID) {
+        <div
+          class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200"
+        >
+          <img [src]="game.thumb" [alt]="game.title" class="w-full h-32 object-cover" />
+          <div class="p-4 flex flex-col gap-2">
+            <h2 class="text-white font-semibold text-sm truncate">
+              {{ game.title }}
+            </h2>
+
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-gray-400 line-through text-xs"> ${{ game.normalPrice }} </span>
+              <span class="text-green-400 font-bold text-sm"> ${{ game.salePrice }} </span>
+            </div>
+            <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full w-fit">
+              {{ game.savings | number: '1.0-0' }}% OFF
+            </span>
+
+            <div class="p-4 flex flex-col gap-2">
+              @if (isInLibrary(game.gameID)) {
+                <button
+                  (click)="store.removeGame(game.gameID)"
+                  class="mt-2 bg-rose-600 hover:bg-rose-700 text-white text-center text-xs font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                >
+                  Remove from Library
+                </button>
+              } @else {
+                <button
+                  (click)="store.addGame(game)"
+                  class="mt-2 bg-blue-600 hover:bg-blue-700 text-white text-center text-xs font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                >
+                  Add to Library
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-6">
+    <div class="bg-gray-800 p-6 rounded-full mb-4 shadow-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+      </svg>
+    </div>
+
+    <h2 class="text-2xl font-bold text-white mb-2">Library is empty</h2>
+  </div>
+}
