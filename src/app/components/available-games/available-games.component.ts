@@ -3,6 +3,7 @@ import { DataFetchService } from "../../shared/services/data.service";
 import { GameDealsData } from "../../shared/models/data.model";
 import { Subscription } from "rxjs";
 import { CommonModule, DecimalPipe } from "@angular/common";
+import { GameStore } from "../../store/library.store";
 
 @Component({
     selector : 'app-available',
@@ -12,6 +13,7 @@ import { CommonModule, DecimalPipe } from "@angular/common";
 })
 export class AvailableGamesComponent implements OnInit , OnDestroy{
     private gamesDataClass = inject(DataFetchService);
+    readonly store = inject(GameStore);
     private subscription = new Subscription;
     gamesData : GameDealsData[] = [];
     private cdr = inject(ChangeDetectorRef);
@@ -34,4 +36,8 @@ export class AvailableGamesComponent implements OnInit , OnDestroy{
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
     } 
+
+    isInLibrary(gameId: string): boolean {
+        return this.store.games().some(g => g.gameID === gameId);
+    }
 };
