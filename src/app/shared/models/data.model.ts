@@ -19,3 +19,29 @@ export interface GameDealsData {
     thumb: string;
     title: string;
 }
+
+interface GameDeal {
+  storeID: string;
+  dealID: string;
+  price: string;       
+  retailPrice: string;
+  savings: string;     
+}
+
+
+interface CheapestPrice {
+  price: string;
+  date: number;        
+}
+
+interface GameInfo {
+  title: string;
+  steamAppID: string | null; 
+  thumb: string;           
+}
+
+export interface GameLookupResponse {
+  info: GameInfo;
+  cheapestPriceEver: CheapestPrice;
+  deals: GameDeal[];
+}
