@@ -7,13 +7,13 @@ export const routes: Routes = [
     {
         path: '',
         component: AvailableGamesComponent,
-        children: [{
-            path: ':id',
-            component: GameDetailsComponent
-        }]
     },
     {
         path: 'library',
         component: LibraryComponent
-    }
+    },
+    {
+        path: 'game/:id',
+        component: GameDetailsComponent
+    },
 ];

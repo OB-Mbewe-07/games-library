@@ -4,6 +4,7 @@ import { GameDealsData } from "../../shared/models/data.model";
 import { Subscription } from "rxjs";
 import { CommonModule, DecimalPipe } from "@angular/common";
 import { GameStore } from "../../store/library.store";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector : 'app-available',

@@ -21,6 +21,7 @@ export class GameDetailsComponent implements OnInit , OnDestroy{
             this.api.getGameDetails(Number(id)).subscribe({
                 next: (data) => {
                     this.gameDetails = data;
+                    console.log(id);
                     this.cdr.detectChanges();
                 },
                 error: (err) =>{
