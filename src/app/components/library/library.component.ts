@@ -7,7 +7,7 @@ import { RouterLink } from "@angular/router";
     selector: 'app-library',
     standalone: true,
     templateUrl: './library.component.html',
-    imports: [CommonModule, DecimalPipe, RouterLink]
+    imports: [CommonModule, DecimalPipe]
 })
 export class LibraryComponent{
     readonly store = inject(GameStore);

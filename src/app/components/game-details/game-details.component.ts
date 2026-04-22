@@ -1,12 +1,13 @@
 import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { DataFetchService } from "../../shared/services/data.service";
 import { Subscription } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { GameLookupResponse } from "../../shared/models/data.model";
 
 @Component({
     selector: 'app-details',
     templateUrl: './game-details.component.html',
+    imports: [RouterLink]
 })
 export class GameDetailsComponent implements OnInit , OnDestroy{
     private api = inject(DataFetchService);

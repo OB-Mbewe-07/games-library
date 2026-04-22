@@ -4,13 +4,13 @@ import { GameDealsData } from "../../shared/models/data.model";
 import { Subscription } from "rxjs";
 import { CommonModule, DecimalPipe } from "@angular/common";
 import { GameStore } from "../../store/library.store";
-import { RouterOutlet } from "@angular/router";
+import { RouterOutlet, RouterLink } from "@angular/router";
 
 @Component({
     selector : 'app-available',
     standalone: true,
     templateUrl: './available-games.component.html',
-    imports: [CommonModule, DecimalPipe]
+    imports: [CommonModule, DecimalPipe, RouterLink]
 })
 export class AvailableGamesComponent implements OnInit , OnDestroy{
     private gamesDataClass = inject(DataFetchService);

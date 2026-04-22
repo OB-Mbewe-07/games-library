@@ -3,6 +3,7 @@
     @for (game of gamesData; track game.dealID) {
       <div
         class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200"
+        [routerLink]="['/game', game.gameID]"
       >
         <img [src]="game.thumb" [alt]="game.title" class="w-full h-32 object-cover" />
         <div class="p-4 flex flex-col gap-2">
